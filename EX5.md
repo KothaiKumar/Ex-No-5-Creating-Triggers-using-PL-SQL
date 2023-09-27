@@ -23,19 +23,40 @@ create table employee1(empid NUMBER, empname VARCHAR(10), dept VARCHAR(10),salar
 
 ### PLSQL Trigger code
 create or replace trigger log_salary_update
+
+
 before update on employee1
+
+
 for each row
+
+
 declare
+
+
 v_old_salary number;
+
+
 v_new_salary number;
+
+
 begin
+
+
      v_old_salary := :old.salary;
+     
      v_new_salary := :new.salary;
+     
      if v_old_salary <> v_new_salary then
+     
           insert into salary_log(empid,empname,old_salary,new_salary,update_date)
+          
           values(:old.empid, :old.empname , v_old_salary ,v_new_salary , SYSDATE);
+          
      end if;
+     
 end;
+
  /
 ### Output:
 ![image](https://github.com/KothaiKumar/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/121215739/fe13bfce-16c2-43c3-a833-fc309f31b482)
