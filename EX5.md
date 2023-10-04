@@ -50,4 +50,4 @@ end;
 
 
 ### Result:
-Thus, a trigger is created using PL/SQL.
+Thus, a trigger is created using PL/SQL successfully.
